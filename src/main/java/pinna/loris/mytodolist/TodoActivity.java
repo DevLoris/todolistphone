@@ -21,7 +21,6 @@ public class TodoActivity extends Activity implements View.OnClickListener, Adap
     private Button validate_button;
     private EditText edit_text;
     private ListView lvMyListView;
-    private String[] listItems = {"item 1", "item 2 ", "list", "android", "item 3", "foobar", "bar", };
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -42,6 +41,8 @@ public class TodoActivity extends Activity implements View.OnClickListener, Adap
         lvMyListView.setOnItemLongClickListener(this);
     }
 
+
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getApplicationContext(),position + " item",Toast.LENGTH_SHORT).show();
@@ -53,21 +54,23 @@ public class TodoActivity extends Activity implements View.OnClickListener, Adap
             Button b = (Button) v;
             if( b == empty_button ) {
                 Toast.makeText(getApplicationContext(),"Liste vidée",Toast.LENGTH_SHORT).show();
-                TodoList.getInstance().clearElements();
+                TodoList.getInstance().clearDoneElements();
+                lvMyListView.invalidateViews();
             }
             else if(b == validate_button) {
 
                 Toast.makeText(getApplicationContext(),"Elément ajouté à la liste",Toast.LENGTH_SHORT).show();
                 TodoList.getInstance().addTodo(edit_text.getText());
                 edit_text.setText("");
+                lvMyListView.invalidateViews();
             }
         }
     }
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        TodoList.getInstance().setImportant(position);
-        Toast.makeText(getApplicationContext(),"Todo importantr",Toast.LENGTH_SHORT).show();
+        TodoList.getInstance().setDone(position);
+        lvMyListView.invalidateViews();
         return false;
     }
 }

@@ -2,6 +2,8 @@ package pinna.loris.mytodolist;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +31,13 @@ public class MySimpleArrayAdapter extends ArrayAdapter<TodoItem> {
         TextView textView = (TextView) rowView.findViewById(R.id.layout_text);
         textView.setText(item.getText());
 
-        if(item.getImportant())
+        if(item.getDone())
+            textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+        if(item.getImportant()) {
             textView.setTextColor(Color.RED);
+            textView.setTypeface(null, Typeface.BOLD);
+        }
         else
             textView.setTextColor(Color.BLACK);
 

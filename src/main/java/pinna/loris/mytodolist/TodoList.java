@@ -37,8 +37,17 @@ public class TodoList {
     public void clearElements() {
         elements.clear();
     }
+    public void clearDoneElements() {
+        for (TodoItem elem :  elements) {
+            if(elem.getDone())
+                this.elements.remove(elem);
+        }
+    }
 
     public void setImportant(int index) {
         this.elements.get(index).setImportant(! this.elements.get(index).getImportant());
+    }
+    public void setDone(int index) {
+        this.elements.get(index).setDone(! this.elements.get(index).getDone());
     }
 }
