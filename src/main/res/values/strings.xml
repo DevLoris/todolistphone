@@ -2,4 +2,5 @@
     <string name="app_name">MyTodoList</string>
     <string name="valider">Valider</string>
     <string name="vider_la_liste">Nettoyer</string>
+    <string name="important">Important</string>
 </resources>

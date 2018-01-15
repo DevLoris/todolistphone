@@ -47,6 +47,9 @@ public class TodoList {
     public void setImportant(int index) {
         this.elements.get(index).setImportant(! this.elements.get(index).getImportant());
     }
+    public void setDetails(int index) {
+        this.elements.get(index).setDetails(! this.elements.get(index).getDetails());
+    }
     public void setDone(int index) {
         this.elements.get(index).setDone(! this.elements.get(index).getDone());
     }

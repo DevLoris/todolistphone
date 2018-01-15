@@ -45,7 +45,8 @@ public class TodoActivity extends Activity implements View.OnClickListener, Adap
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(),position + " item",Toast.LENGTH_SHORT).show();
+        TodoList.getInstance().setDetails(position);
+        lvMyListView.invalidateViews();
     }
 
     @Override
@@ -71,6 +72,6 @@ public class TodoActivity extends Activity implements View.OnClickListener, Adap
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         TodoList.getInstance().setDone(position);
         lvMyListView.invalidateViews();
-        return false;
+        return true;
     }
 }
